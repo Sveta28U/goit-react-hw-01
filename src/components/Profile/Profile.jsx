@@ -1,35 +1,36 @@
-import css from "../Profile/Profile.module.css";
+import s from "./Profile.module.css";
 
-export default function Profile({
-  image,
-  name,
-  tag,
-  location,
-  stats: { followers, views, likes },
-}) {
+const Profile = ({ name, tag, location, image, stats }) => {
   return (
-    <div className={css.phather}>
-      <div className={css.children}>
-        <img className={css.descendantImg} src={image} alt="User avatar" />
-        <p className={css.phatherParagraf}>{name}</p>
-        <p className={css.descendantParagraf}>{tag}</p>
-        <p className={css.descendantParagraf}>{location}</p>
-
-        <ul className={css.descendantUl}>
-          <li className={css.descendantLi}>
-            <span className={css.span}>Followers</span>
-            <span className={css.descendantNumber}>{followers}</span>
-          </li>
-          <li className={css.descendantLiBorder}>
-            <span className={css.span}>Views</span>
-            <span className={css.descendantNumber}>{views}</span>
-          </li>
-          <li className={css.descendantLi}>
-            <span className={css.span}>Likes</span>
-            <span className={css.descendantNumber}>{likes}</span>
-          </li>
-        </ul>
+    <div className={s.wrapper}>
+      <div className={s.mainBlock}>
+        <img
+          className={s.profileImg}
+          src={
+            image || "https://cdn-icons-png.flaticon.com/512/1077/1077012.png"
+          }
+          alt="User avatar"
+        />
+        <p className={s.textName}>{name}</p>
+        <p className={s.textData}>@{tag}</p>
+        <p className={s.textData}>{location}</p>
       </div>
+      <ul className={s.list}>
+        <li className={s.textItem}>
+          <span>Followers</span>
+          <span className={s.textSpan}>{stats.followers}</span>
+        </li>
+        <li className={s.textItem}>
+          <span>Views</span>
+          <span className={s.textSpan}>{stats.views}</span>
+        </li>
+        <li className={s.textItem}>
+          <span>Likes</span>
+          <span className={s.textSpan}>{stats.likes}</span>
+        </li>
+      </ul>
     </div>
   );
-}
+};
+
+export default Profile;

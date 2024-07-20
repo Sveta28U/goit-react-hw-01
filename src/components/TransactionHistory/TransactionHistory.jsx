@@ -1,24 +1,26 @@
-import TransactionItem from "../TransactionItem/TransactionItem";
-import css from "./TransactionHistory.module.css";
+import s from "./TransactionHistory.module.css";
 
-export default function TransactionHistory({ items }) {
+const YourTableComponent = ({ items }) => {
   return (
-    <table className={css.table}>
-      <thead>
-        <tr className={css.headtittle}>
-          <th className={css.tittle}>Type</th>
-          <th className={css.tittle}>Amount</th>
-          <th className={css.tittle}>Currency</th>
+    <table className={s.table}>
+      <thead className={s.head}>
+        <tr className={s.trHead}>
+          <th className={s.thHead}>Type</th>
+          <th className={s.thHead}>Amount</th>
+          <th className={s.thHead}>Currency</th>
         </tr>
       </thead>
-
       <tbody>
-        {items.map((item) => (
-          <tr className={css.line} key={item.id}>
-            <TransactionItem item={item} />
+        {items.map((transaction) => (
+          <tr key={transaction.id}>
+            <td className={s.tdBoby}>{transaction.type}</td>
+            <td className={s.tdBoby}>{transaction.amount}</td>
+            <td className={s.tdBoby}>{transaction.currency}</td>
           </tr>
         ))}
       </tbody>
     </table>
   );
-}
+};
+
+export default YourTableComponent;
